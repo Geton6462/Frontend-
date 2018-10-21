@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf8">
+    <link rel="stylesheet" href="./../css/header-footer-css.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./../js/javascript.js"></script> 
+    <script src="./../js/ielts-quick-test.js"></script> 
+    
+</head>
+<body>
+    //
+    <script>
+        window.onload = function(){
+            var header = document.getElementById("header");
+            var qt = document.getElementById("navigate-question-type");
+            qt.style.top = header.offsetHeight + "px";
+            var nothing = document.getElementById("nothing");
+            nothing.style.height = (qt.offsetHeight + header.offsetHeight) + "px";
+        }
+    </script>
+    <!-- header -->
+    <div class = "header" id="header">
+        <div class="col-sm-3">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar" style ="background: #333"></span>
+                        <span class="icon-bar" style ="background: #333"></span>
+                        <span class="icon-bar" style ="background: #333"></span>                        
+                    </button>
+                    <button class="logo">
+                        <img src="img/Logo.png">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button onclick="changeTextSize()"><img src="img/icon_edit text.png">Text size</button></li>
+                    <li><button href="#"><img src="img/icon_exit.png">Exit test</button></li>
+                    <li><button href="#"><img src="img/icon_more.png"></button></li>
+                    <li class="right-wall"></li>
+                    <li><button href="#"> <img src="img/icon_review.png">Review</button></li>
+                    <li><button class="button-submit">Submit</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end header -->
+
+    <!-- body -->
+    <div class="container-fluid" id="navigate-question-type">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 question-type">
+            <div class="col-sm-2" style="color: rgb(34, 55, 114);">.</div>
+            <div class="col-sm-2" >
+                <span id="dash_listening" class="dash" style="opacity: 1;"></span>
+                <div class="type" onclick="display_dash('dash_listening', 'listening')"> 
+                    <a id="listening" style="color: #fff"> Listening </a>
+                 </div>
+            </div>
+            <div class="col-sm-2" >
+                <span id="dash_speaking" class="dash" onclick='display_dash()'></span>
+                <div class="type" onclick="display_dash('dash_speaking', 'speaking')"> 
+                    <a id="speaking"> Speaking </a>
+                </div>
+            </div>
+            <div class="col-sm-2" >
+                <span id="dash_reading" class="dash"></span>
+                <div class="type" onclick="display_dash('dash_reading', 'reading')"> 
+                    <a id="reading"> Reading </a>
+                </div>
+            </div>
+            <div class="col-sm-2" >
+                <span id="dash_writing" class="dash"></span>
+                <div class="type" onclick="display_dash('dash_writing', 'writing')">
+                    <a id="writing"> Writing </a>
+                </div>
+            </div>
+            <div class="col-sm-2" style="color: rgb(34, 55, 114);" >.</div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+    <!-- SPEAKING -->
+    <!--
+    <div id="nothing"></div>
+    <div class="container-fluid contain">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" style="padding: 0 40px">
+            <div>
+                <span class="question-number">question 1</span>
+            </div>
+            <div style="margin-top: 20px">
+                <span class="question">How do you pronounce the word <span class="word">"asset"</span> ?</span>
+            </div>
+            <div style="margin-top: 60px">
+                <button id="a" class="multi-choice-answer" onclick="checkAnswer('a', true)">A</button>
+                <input type="checkbox" name="checkbox" id="checkbox_a" value="value" style="display: none" onclick="checkAnswer('a')">
+                <button class="button-speaking">
+                    <a class="fa fa-play" style="color: rgb(70, 107, 209)"></a>
+                    <span style="display: inline-block; margin-left: 10px;"> Listen answer</span>
+                </button>
+            </div>
+            <div style="margin-top: 25px">
+                <button id="b" class="multi-choice-answer" onclick="checkAnswer('b', true)">B</button>
+                <input type="checkbox" name="checkbox" id="checkbox_b" value="value" style="display: none" onclick="checkAnswer('b')">
+                <button class="button-speaking">
+                    <a class="fa fa-play" style="color: rgb(70, 107, 209)"></a>
+                    <span style="display: inline-block; margin-left: 10px;"> Listen answer</span>
+                </button>
+            </div>
+            <div style="margin-top: 25px">
+                <button id="c" class="multi-choice-answer" onclick="checkAnswer('c', true)">C</button>
+                <input type="checkbox" name="checkbox" id="checkbox_c" value="value" style="display: none" onclick="checkAnswer('c')">
+                <button class="button-speaking">
+                    <a class="fa fa-play" style="color: rgb(70, 107, 209)"></a>
+                    <span style="display: inline-block; margin-left: 10px;"> Listen answer</span>
+                </button>
+            </div>
+            <div style="margin-top: 25px">
+                <button id="d" class="multi-choice-answer" onclick="checkAnswer('d', true)">D</button>
+                <input type="checkbox" name="checkbox" id="checkbox_d" value="value" style="display: none" onclick="checkAnswer('d')">
+                <button class="button-speaking">
+                    <a class="fa fa-play" style="color: rgb(70, 107, 209)"></a>
+                    <span style="display: inline-block; margin-left: 10px;"> Listen answer</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    -->
+    <!-- end SPEAKING-->
+
+    <!-- LISTENING -->
+    <div id="nothing"></div>
+    <div class="contain">
+        <div class="half-screen" style="width: 100%;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6" style="padding: 60px 40px 0 40px">
+                <div>
+                    <span class="question-number">question 1</span>
+                </div>
+                <div style="margin-top: 20px">
+                    <span class="question text-resizable">What is the word you have just listened to?</span>
+                    <button style="margin-left: 20px; border:none; background: inherit">
+                        <i class="fa fa-volume-up text-resizable" style="color: rgb(231, 99, 23); font-size: 25px"></i>
+                    </button>
+                </div>
+                <div style="margin-top: 60px">
+                    <button id="a" class="multi-choice-answer" onclick="checkAnswer('a', true)">A</button>
+                    <input type="checkbox" name="checkbox" id="checkbox_a" value="value" style="display: none" onclick="checkAnswer('a')">
+                    <label for="checkbox_a">
+                        <span class="text-resizable"> seize</span>
+                    </label>
+                </div>
+                <div style="margin-top: 25px">
+                    <button id="b" class="multi-choice-answer" onclick="checkAnswer('b', true)">B</button>
+                    <input type="checkbox" name="checkbox" id="checkbox_b" value="value" style="display: none" onclick="checkAnswer('b')">
+                    <label for="checkbox_b">
+                        <span class="text-resizable">size</span>
+                    </label>
+                </div>
+                <div style="margin-top: 25px">
+                    <button id="c" class="multi-choice-answer" onclick="checkAnswer('c', true)">C</button>
+                    <input type="checkbox" name="checkbox" id="checkbox_c" value="value" style="display: none" onclick="checkAnswer('c')">
+                    <label for="checkbox_c">
+                        <span class="text-resizable">says</span>
+                    </label>
+                </div>
+                <div style="margin-top: 25px">
+                    <button id="d" class="multi-choice-answer" onclick="checkAnswer('d', true)">D</button>
+                    <input type="checkbox" name="checkbox" id="checkbox_d" value="value" style="display: none" onclick="checkAnswer('d')">
+                    <label for="checkbox_d">
+                        <span class="text-resizable">said</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+    <!-- end LISTENING-->
+
+    <!-- end body -->
+
+    <!-- footer -->
+    <div class = "footer">
+        <div class="container-fluid">
+            <div class="col-sm-2">
+                <div style="position: absolute; margin-left: 0; left: 40px">
+                    <div class="dash" style="background: #242d65; opacity: 1;"></div>
+                    <span style="color: rgb(65, 63, 151)">Time left</span>
+                </div>
+                <div class="timer">
+                    <span>40 : 00</span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+            <div class="row questions">
+                <button><span>1</span></button>
+                <button><span>2</span></button>
+                <button><span>3</span></button>
+                <button><span>4</span></button>
+                <button><span>5</span></button>
+                <button><span>6</span></button>
+                <button><span>7</span></button>
+                <button><span>8</span></button>
+                <button><span>9</span></button>
+                <button><span>10</span></button>
+            </div>
+            <div class="row questions">
+                <button><span>11</span></button>
+                <button><span>12</span></button>
+                <button><span>13</span></button>
+                <button><span>14</span></button>
+                <button><span>15</span></button>
+                <button><span>16</span></button>
+                <button><span>17</span></button>
+                <button><span>18</span></button>
+                <button><span>19</span></button>
+                <button><span>20</span></button>
+            </div>
+
+            </div>
+            <div class="col-sm-4" style="text-align: left; padding-top: 20px;">
+                <button class="long-button button-previous-question">Previous question</button>
+                <button class="long-button button-next-question">Skip this question</button>
+            </div>
+        </div>
+    </div>
+    <!-- end footer -->
+</body>
+</html>
